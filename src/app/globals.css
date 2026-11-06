@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #fff7ee;
+  --color-sand: #ffe9d6;
+  --color-peach: #ffb48a;
+  --color-terra: #c94f2c;
+  --color-terra-dark: #a93f21;
+  --color-brown: #2b1d14;
+  --color-soft: #6b5446;
+  --color-mint: #d4ecdf;
+  --color-sky: #dce9f7;
+  --color-butter: #fff0b8;
+  --color-rose: #f6dfe8;
+  --color-lilac: #e6e1f7;
+  --color-latte: #e8d6c8;
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@theme inline {
+  --font-sans: var(--font-nunito), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-cream);
+}
+
+body {
+  color: var(--color-brown);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-peach);
+  color: var(--color-brown);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-terra);
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+/* Появление при прокрутке: мягко поднимается и проявляется. --d — задержка в сетке. */
+.reveal {
+  opacity: 0;
+  transform: translateY(44px) scale(0.97);
+  transition:
+    opacity 1s var(--ease-soft) var(--d, 0s),
+    transform 1s var(--ease-soft) var(--d, 0s),
+    translate 0.6s var(--ease-soft),
+    rotate 0.6s var(--ease-soft),
+    box-shadow 0.4s ease;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+.reveal .pop {
+  opacity: 0;
+  transform: scale(0.5) rotate(-16deg);
+  transition:
+    opacity 0.8s var(--ease-soft) calc(var(--d, 0s) + 0.2s),
+    transform 0.9s var(--ease-spring) calc(var(--d, 0s) + 0.2s);
+}
+.reveal.is-in .pop {
+  opacity: 1;
+  transform: none;
+}
+
+/* «Дышащие» пятна за питомцами */
+@keyframes morph {
+  0%,
+  100% {
+    border-radius: 42% 58% 63% 37% / 45% 40% 60% 55%;
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    border-radius: 58% 42% 38% 62% / 55% 62% 38% 45%;
+    transform: rotate(8deg) scale(1.03);
+  }
+}
+.blob {
+  animation: morph 14s ease-in-out infinite;
+}
+.blob-slow {
+  animation: morph 19s ease-in-out infinite reverse;
+}
+
+/* плашки на первом экране покачиваются */
+@keyframes bob {
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.bob {
+  animation: bob 5s ease-in-out infinite;
+}
+
+/* кот моргает, хвост пса виляет */
+@keyframes blink {
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.1);
+  }
+}
+.blink {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: blink 5.5s infinite;
+}
+@keyframes wag {
+  0%,
+  100% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(16deg);
+  }
+}
+.wag {
+  transform-box: fill-box;
+  transform-origin: 0% 100%;
+  animation: wag 0.9s ease-in-out infinite;
+}
+
+/* лента отзывов */
+@keyframes slide {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee {
+  animation: slide 45s linear infinite;
+}
+.marquee-wrap:hover .marquee {
+  animation-play-state: paused;
+}
+
+/* У тех, кто попросил в системе «меньше движения», всё двигается — но короче и спокойнее. */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transform: translateY(16px);
+  }
+  .reveal .pop {
+    transform: scale(0.85);
+  }
+  .blob,
+  .blob-slow {
+    animation-duration: 28s;
+  }
+  .marquee {
+    animation-duration: 80s;
+  }
+}
