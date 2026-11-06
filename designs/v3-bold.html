@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Лапа — ветклиника · вариант 3 «Смелый»</title>
+<meta name="theme-color" content="#0c0c0c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0c0c;--tx:#f1f1ee;--mu:#9a9a94;--ln:#2a2a28;--ac:#ffd12e;--pad:clamp(16px,3.5vw,48px);--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 15px/1.6 'JetBrains Mono',monospace;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;text-transform:inherit;letter-spacing:inherit}
+.u{font-family:'Unbounded',sans-serif}
+::selection{background:var(--ac);color:#000}
+main{overflow-x:clip}
+:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
+.paw{display:inline-block;width:1em;height:1em;vertical-align:-.12em}
+
+header{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:16px var(--pad);font-size:13px;text-transform:uppercase;letter-spacing:.06em;background:#0c0c0ccc;backdrop-filter:blur(12px);border-bottom:1px solid #ffffff10}
+.logo{font-family:'Unbounded';font-weight:900;font-size:17px;letter-spacing:0;display:flex;align-items:center;gap:8px}
+.logo .paw{color:var(--ac)}
+header nav{display:flex;gap:26px}
+header nav a:hover,.brk:hover{color:var(--ac)}
+.brk:before{content:"[ "}.brk:after{content:" ]"}
+.sos{color:var(--ac)}
+
+.hero{position:relative;padding:clamp(40px,7vw,90px) var(--pad) clamp(30px,5vw,60px)}
+.hero h1{margin:0;font-family:'Unbounded';font-weight:900;text-transform:uppercase;font-size:clamp(40px,9.4vw,168px);line-height:.98;letter-spacing:-.045em}
+.hero h1 .l{display:block;overflow:hidden;padding-top:.05em;margin-top:-.05em}
+.hero h1 .l>span{display:inline-block;transform:translateY(110%);transition:transform 1.1s var(--ease)}
+.ready .hero h1 .l>span{transform:none}
+.hero h1 .l:nth-child(2)>span{transition-delay:.08s}.hero h1 .l:nth-child(3)>span{transition-delay:.16s}
+.hero h1 .l:nth-child(2){padding-left:10vw}
+.o{color:var(--bg);-webkit-text-stroke:4px var(--ac);paint-order:stroke fill;transition:color .6s var(--ease)}
+.o:hover{color:var(--ac)}
+.hl{background:var(--ac);color:#000;padding:0 .12em}
+.hero-row{display:grid;grid-template-columns:1.6fr 1fr .9fr;gap:28px;margin-top:clamp(28px,4vw,52px);align-items:end}
+.hero-row p{margin:0;max-width:460px;color:#d0d0cb;font-size:16px}
+.tag{color:var(--mu);font-size:12px;text-transform:uppercase;line-height:1.9}
+.tag b{color:var(--ac);font-weight:600}
+.ctas{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:56px;padding:0 26px;border-radius:999px;background:var(--ac);color:#000;font-family:'Unbounded';font-weight:600;font-size:14px;text-transform:uppercase;transition:transform .35s var(--ease),background .25s,color .25s}
+.btn:hover{transform:scale(1.05) rotate(-1.5deg)}
+.btn.ghost{background:transparent;color:var(--tx);border:1.5px solid #ffffff40}
+.btn.ghost:hover{border-color:var(--ac);color:var(--ac)}
+.btn.dark{background:#000;color:var(--ac)}
+.sticker{position:absolute;right:var(--pad);top:clamp(30px,5vw,70px);width:clamp(120px,14vw,180px);aspect-ratio:1;display:grid;place-items:center;z-index:2}
+.sticker svg.ring{position:absolute;inset:0;width:100%;height:100%;animation:rot 12s linear infinite}
+.sticker:hover svg.ring{animation-duration:4s}
+.sticker b{width:48%;aspect-ratio:1;border-radius:50%;background:var(--ac);color:#000;display:grid;place-items:center;font-family:'Unbounded';font-weight:900;font-size:clamp(14px,1.6vw,20px);transition:transform .4s var(--ease)}
+.sticker:hover b{transform:scale(1.1) rotate(-8deg)}
+@keyframes rot{to{transform:rotate(360deg)}}
+
+.bands{position:relative;height:clamp(150px,16vw,220px)}
+.band{position:absolute;left:-40px;right:-40px;top:50%;padding:14px 0;overflow:hidden;border-block:2px solid #000}
+.band.a{background:var(--ac);color:#000;transform:translateY(-50%) rotate(-3deg);z-index:2}
+.band.b{background:#161615;color:#161615;-webkit-text-stroke:2.4px var(--ac);paint-order:stroke fill;transform:translateY(-50%) rotate(2.5deg);border-color:#262624}
+.band .track{display:flex;width:max-content;animation:mq 26s linear infinite;font-family:'Unbounded';font-weight:800;font-size:clamp(20px,2.6vw,34px);text-transform:uppercase;white-space:nowrap}
+.band.b .track{animation-direction:reverse;animation-duration:32s}
+.band span{padding:0 22px}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+section.s{padding:clamp(70px,9vw,120px) var(--pad)}
+.sec-h{display:flex;justify-content:space-between;align-items:end;gap:20px;border-bottom:2px solid var(--tx);padding-bottom:18px}
+.sec-h h2{margin:0;font-family:'Unbounded';font-weight:800;text-transform:uppercase;font-size:clamp(34px,5.6vw,84px);line-height:.95;letter-spacing:-.03em}
+.sec-h span{color:var(--mu);font-size:12px;text-transform:uppercase;text-align:right}
+.row{display:grid;grid-template-columns:100px 1.2fr 1fr 160px 50px;gap:24px;align-items:center;padding:24px 0;border-bottom:1px solid var(--ln);transition:background .25s,color .25s,padding .4s var(--ease)}
+.row .n{font-family:'Unbounded';font-weight:800;font-size:clamp(26px,3vw,42px);color:var(--ac);transition:color .25s}
+.row h3{margin:0;font-family:'Unbounded';font-weight:800;text-transform:uppercase;font-size:clamp(19px,2.1vw,30px);letter-spacing:-.02em;line-height:1.05}
+.row .d{color:var(--mu);font-size:13px;transition:color .25s}
+.row .p{font-family:'Unbounded';font-weight:600;font-size:18px;text-align:right}
+.row .ar{font-size:28px;justify-self:end;transition:transform .4s var(--ease)}
+.row:hover{background:var(--ac);color:#000;padding-inline:18px}
+.row:hover .n,.row:hover .d{color:#000}
+.row:hover .ar{transform:rotate(-45deg)}
+
+.docs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.doc{border:1.5px solid var(--ln);border-radius:28px;padding:26px;position:relative;overflow:hidden;transition:border-color .3s,transform .45s var(--ease)}
+.doc:hover{border-color:var(--ac);transform:translateY(-6px) rotate(-.8deg)}
+.doc .big{font-family:'Unbounded';font-weight:900;font-size:clamp(60px,7vw,110px);line-height:.9;color:var(--bg);-webkit-text-stroke:3px var(--ac);paint-order:stroke fill}
+.doc h3{margin:20px 0 4px;font-family:'Unbounded';font-weight:800;text-transform:uppercase;font-size:20px}
+.doc p{margin:0;color:var(--mu)}
+.doc .yrs{position:absolute;top:22px;right:22px;background:var(--ac);color:#000;border-radius:999px;padding:4px 12px;font-weight:600;font-size:12px;text-transform:uppercase}
+
+.sos-block{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:36px;align-items:center}
+.sos-block .big{font-family:'Unbounded';font-weight:900;font-size:clamp(80px,14vw,230px);line-height:.85;letter-spacing:-.05em;color:var(--ac)}
+.sos-block p{color:#d0d0cb;max-width:460px;margin:0 0 20px}
+
+.book{background:var(--ac);color:#000;padding:clamp(60px,9vw,130px) var(--pad)}
+.book h2{margin:0;font-family:'Unbounded';font-weight:900;text-transform:uppercase;font-size:clamp(40px,8.4vw,146px);line-height:.92;letter-spacing:-.04em}
+.book .grid{display:grid;grid-template-columns:1fr 1.1fr;gap:28px;margin-top:clamp(36px,5vw,64px);align-items:end}
+.book p{margin:0;max-width:420px;font-size:16px}
+.book form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.book input,.book select{height:58px;border:2px solid #000;border-radius:999px;background:transparent;padding:0 22px;font:inherit;font-size:15px;color:#000}
+.book input::placeholder{color:#000000a0}
+.book .wide{grid-column:1/-1}
+.ok{display:none;font-family:'Unbounded';font-weight:800;font-size:22px;text-transform:uppercase}
+footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:22px var(--pad) 36px;font-size:12px;color:var(--mu);text-transform:uppercase}
+
+.cur{position:fixed;left:0;top:0;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:var(--ac);pointer-events:none;z-index:200;mix-blend-mode:difference;transition:width .3s var(--ease),height .3s var(--ease),margin .3s var(--ease),opacity .3s;opacity:0}
+.cur.on{opacity:1}.cur.big{width:60px;height:60px;margin:-30px 0 0 -30px}
+@media (pointer:fine){body,a,button{cursor:none}}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
+.reveal.in{opacity:1;transform:none}
+.row.reveal{transition:opacity .8s var(--ease),transform .8s var(--ease),background .25s,color .25s,padding .4s var(--ease);transition-delay:var(--d,0s),var(--d,0s),0s,0s,0s}
+@media (max-width:900px){header nav{display:none}.hero-row,.sos-block,.book .grid{grid-template-columns:1fr}.row{grid-template-columns:52px 1fr auto;gap:6px 14px}.row .n{grid-row:span 2}.row h3{grid-column:2;grid-row:1}.row .p{grid-column:3;grid-row:1;white-space:nowrap;font-size:15px}.row .d{grid-column:2/4;grid-row:2}.row .ar{display:none}.docs{grid-template-columns:1fr}.sticker{position:relative;right:auto;top:auto;margin:0 0 20px auto}}
+@media (max-width:600px){.hero h1 .l:nth-child(2){padding-left:0}.o{-webkit-text-stroke-width:3px}.btn{width:100%}.book form{grid-template-columns:1fr}.sec-h span{display:none}}
+@media (prefers-reduced-motion:reduce){.reveal{transform:translateY(14px)}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="paw" viewBox="0 0 24 24"><g fill="currentColor"><ellipse cx="12" cy="15.5" rx="4.8" ry="4.2"/><ellipse cx="5.8" cy="10.2" rx="2.1" ry="2.6"/><ellipse cx="9.6" cy="6.3" rx="2.1" ry="2.6"/><ellipse cx="14.4" cy="6.3" rx="2.1" ry="2.6"/><ellipse cx="18.2" cy="10.2" rx="2.1" ry="2.6"/></g></symbol></svg>
+<header>
+  <a class="logo" href="#"><svg class="paw"><use href="#paw"/></svg>ЛАПА</a>
+  <nav><a href="#svc">Услуги</a><a href="#docs">Врачи</a><a href="#sos">24/7</a><a href="#book">Запись</a></nav>
+  <a class="brk sos" href="tel:+375291234567">SOS 24/7</a>
+</header>
+
+<main>
+<section class="hero">
+  <a class="sticker" href="tel:+375291234567" aria-label="Экстренная помощь 24/7">
+    <svg class="ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="c" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text font-family="Unbounded" font-weight="600" font-size="15" fill="#f1f1ee"><textPath href="#c" textLength="486" lengthAdjust="spacing">ЭКСТРЕННО ✦ КРУГЛОСУТОЧНО ✦ ЭКСТРЕННО ✦</textPath></text></svg>
+    <b>24/7</b>
+  </a>
+  <h1 aria-label="Лечим хвосты без паники"><span class="l"><span>Лечим</span></span><span class="l"><span class="o">хвосты</span></span><span class="l"><span>без <span class="hl">паники</span></span></span></h1>
+  <div class="hero-row">
+    <div>
+      <p>Ветклиника для кошек, собак и всех, кто приходит с лапами. Честная диагностика, понятные цены и врач, который <span style="color:var(--ac)">объясняет, а не пугает</span>.</p>
+      <div class="ctas"><a class="btn" href="#book">Записаться</a><a class="btn ghost" href="#svc">Цены ↓</a></div>
+    </div>
+    <div class="tag"><b>[01]</b> Терапия и вакцинация<br><b>[02]</b> Хирургия и стоматология<br><b>[03]</b> Стационар 24/7</div>
+    <div class="tag" style="text-align:right"><svg class="paw" style="color:var(--ac)"><use href="#paw"/></svg> Открыто сейчас<br>Минск · ул. Примерная, 1</div>
+  </div>
+</section>
+
+<div class="bands" aria-hidden="true">
+  <div class="band b"><div class="track" id="bB"></div></div>
+  <div class="band a"><div class="track" id="bA"></div></div>
+</div>
+
+<section class="s" id="svc">
+  <div class="sec-h reveal"><h2>Услуги</h2><span>Цены «от»<br>в BYN</span></div>
+  <div id="rows"></div>
+</section>
+
+<section class="s" id="docs" style="padding-top:0">
+  <div class="sec-h reveal"><h2>Врачи</h2><span>Без белых халатов<br>и строгих лиц</span></div>
+  <div class="docs">
+    <div class="doc reveal"><span class="yrs">9 лет</span><div class="big">АК</div><h3>Анна Ковалёва</h3><p>Терапевт. Найдёт подход даже к самому нервному коту.</p></div>
+    <div class="doc reveal" style="--d:.08s"><span class="yrs">12 лет</span><div class="big">ДЛ</div><h3>Дмитрий Лис</h3><p>Хирург. Сложные операции и спокойный голос.</p></div>
+    <div class="doc reveal" style="--d:.16s"><span class="yrs">6 лет</span><div class="big">МШ</div><h3>Мария Шульга</h3><p>Фелинолог и дерматолог. Всё про кошек и шерсть.</p></div>
+  </div>
+</section>
+
+<section class="s" id="sos" style="padding-top:0">
+  <div class="sec-h reveal"><h2>Экстренно</h2><span>Без записи<br>днём и ночью</span></div>
+  <div class="sos-block">
+    <div class="big reveal">24/7</div>
+    <div class="reveal" style="--d:.1s"><p>Отравление, травма, тяжело дышит, не ест вторые сутки — приезжайте сразу. Дежурный врач и реанимация на месте круглосуточно.</p><a class="btn" href="tel:+375291234567">+375 29 123-45-67</a></div>
+  </div>
+</section>
+
+<section class="book" id="book">
+  <h2 class="reveal">Запишем<br>за минуту</h2>
+  <div class="grid">
+    <p class="reveal">Оставьте телефон — перезвоним, подберём врача и время. Ежедневно 8:00–22:00.</p>
+    <form id="f" class="reveal" style="--d:.1s" novalidate>
+      <input name="n" placeholder="Ваше имя" aria-label="Ваше имя" autocomplete="given-name">
+      <select name="pet" aria-label="Кто пациент"><option>Кошка</option><option>Собака</option><option>Другое</option></select>
+      <input class="wide" name="p" type="tel" placeholder="+375 29 123-45-67" aria-label="Телефон" autocomplete="tel">
+      <button class="btn dark wide">Записаться →</button>
+      <p class="ok wide" role="status" id="ok">Готово! Это демо — заявка никуда не ушла.</p>
+    </form>
+  </div>
+</section>
+</main>
+<footer><span>© ЛАПА — ветеринарная клиника</span><span>Концепт для портфолио: клиника и врачи вымышленные</span></footer>
+<div class="cur" id="cur" aria-hidden="true"></div>
+
+<script>
+const P='<svg class="paw"><use href="#paw"/></svg>';
+const fill=(id,w)=>document.getElementById(id).innerHTML=[...w,...w,...w,...w].map(x=>`<span>${x}</span>`).join(P);
+fill('bA',['Кошки','Собаки','Кролики','Хорьки','Птицы','Черепахи']);
+fill('bB',['Терапия','Хирургия','УЗИ','Анализы','Вакцины','Стационар']);
+const S=[["Осмотр и терапия","Разберёмся в причине, а не только в симптомах",35],["Вакцинация","По графику, с паспортом и напоминанием",45],["Хирургия","Стерилизация и операции под наблюдением",120],["Стоматология","Чистка ультразвуком, лечение, удаление",60],["УЗИ и анализы","Своя лаборатория, результат в тот же день",40],["Стационар 24/7","Боксы, врач рядом, фото-отчёты хозяину",50]];
+document.getElementById('rows').innerHTML=S.map(([t,d,p],i)=>`<a class="row reveal" href="#book" style="--d:${(i%3)*.06}s"><span class="n">0${i+1}</span><h3>${t}</h3><span class="d">${d}</span><span class="p">от ${p}</span><span class="ar">→</span></a>`).join('');
+document.getElementById('f').onsubmit=e=>{e.preventDefault();document.getElementById('ok').style.display='block'};
+setTimeout(()=>document.body.classList.add('ready'),80);
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// ленты ускоряются от прокрутки
+let lastY=scrollY,slow;
+addEventListener('scroll',()=>{const v=Math.min(Math.abs(scrollY-lastY)/6,5);lastY=scrollY;document.querySelectorAll('.band .track').forEach(t=>t.getAnimations().forEach(a=>a.playbackRate=1+v));clearTimeout(slow);slow=setTimeout(()=>document.querySelectorAll('.band .track').forEach(t=>t.getAnimations().forEach(a=>a.playbackRate=1)),160)},{passive:true});
+if(matchMedia('(pointer:fine)').matches){const c=document.getElementById('cur');addEventListener('pointermove',e=>{c.style.transform=`translate(${e.clientX}px,${e.clientY}px)`;c.classList.add('on')});document.addEventListener('pointerover',e=>c.classList.toggle('big',!!e.target.closest('a,button,input,select')))}
+</script>
+</body>
+</html>

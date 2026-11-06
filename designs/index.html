@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Лапа — варианты дизайна</title>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#111113;color:#eee;font:400 16px/1.5 'Golos Text',system-ui,sans-serif}
+.wrap{max-width:1400px;margin:0 auto;padding:40px 16px 60px}
+h1{margin:0 0 6px;font-size:clamp(28px,4vw,44px);letter-spacing:-.03em}
+.sub{color:#9a9aa3;margin:0 0 36px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,380px),1fr));gap:24px}
+.v{border:1px solid #26262b;border-radius:18px;overflow:hidden;background:#18181b;display:flex;flex-direction:column}
+.shot{position:relative;aspect-ratio:16/10;overflow:hidden;background:#000}
+.shot iframe{position:absolute;top:0;left:0;width:1440px;height:900px;border:0;transform-origin:0 0;pointer-events:none}
+.info{padding:18px 20px 20px}
+.info h2{margin:0 0 4px;font-size:20px}
+.info p{margin:0 0 14px;color:#9a9aa3;font-size:15px}
+.info a{display:inline-flex;gap:8px;align-items:center;height:42px;padding:0 18px;border-radius:999px;background:#fff;color:#111;text-decoration:none;font-weight:600;font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Ветклиника «Лапа»: 3 варианта дизайна</h1>
+  <p class="sub">Нажмите «Открыть», чтобы посмотреть вариант целиком (с анимациями и на телефоне).</p>
+  <div class="grid" id="g"></div>
+</div>
+<script>
+const V=[
+  ['v1-warm.html','1. Тёплый','Мягкий и дружелюбный: кремовый фон, «живые» пятна, нарисованные кот и пёс, пастельные карточки, бегущие отзывы.'],
+  ['v2-clinic.html','2. Клиника','Строгий премиум: белый и глубокий зелёный, крупные цифры, плитки услуг, рабочая онлайн-запись по дням и часам.'],
+  ['v3-bold.html','3. Смелый','В духе портфолио: чёрный и солнечно-жёлтый, огромные буквы, ленты крест-накрест, стикер «24/7», строки-услуги с заливкой.']
+];
+document.getElementById('g').innerHTML=V.map(v=>`<div class="v"><div class="shot"><iframe src="${v[0]}" loading="lazy" tabindex="-1" title="${v[1]}"></iframe></div><div class="info"><h2>${v[1]}</h2><p>${v[2]}</p><a href="${v[0]}" target="_blank">Открыть ↗</a></div></div>`).join('');
+function fit(){document.querySelectorAll('.shot').forEach(s=>{s.querySelector('iframe').style.transform='scale('+s.clientWidth/1440+')'})}
+addEventListener('resize',fit);fit();
+</script>
+</body>
+</html>
